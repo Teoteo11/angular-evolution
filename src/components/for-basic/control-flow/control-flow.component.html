@@ -1,0 +1,9 @@
+<div class="p-4">
+  @if(logged()){
+    <p>Ciao Matteo</p>
+    <button class="btn btn-info text-xl" (click)="logout()">Logout</button>
+  } @else {
+    <p>Login</p>
+    <button class="btn btn-info text-xl" (click)="login()">Sign in</button>
+  }
+</div>
