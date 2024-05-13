@@ -1,8 +1,14 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes)]
+  /* 
+    withComponentInputBinding:
+      we can take data ( data: { title: 'Hello Input Params'} ) 
+      and params ( /products/:productId ) 
+      from route  in component with @Input productId
+  */
+  providers: [provideRouter(routes, withComponentInputBinding())]
 };
