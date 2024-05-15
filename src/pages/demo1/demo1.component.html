@@ -1,1 +1,11 @@
-<p>demo1 works!</p>
+<h2>Play with toSignal</h2>
+
+
+@for (user of users(); track user.id) {
+  <li>{{user.name}}</li>
+}
+<hr>
+
+@for (name of names(); track $index) {
+  <li>{{ name }}</li>
+}
