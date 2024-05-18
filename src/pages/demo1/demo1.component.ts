@@ -19,4 +19,10 @@ export default class Demo1Component {
 
   names = computed(() => this.users()?.map(u => u.name))
 
+  /* 
+    Change Detection 
+      - onPush: does not update the component wildly, it restricts updating from outside, not internally.
+
+  */
+
 }
