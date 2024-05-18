@@ -1,23 +1,67 @@
 <div class="flex gap-6 justify-center">
   @for (product of products(); track product.id) {
-      <div class="card w-full bg-base-100 shadow-xl">
-          <figure><img [src]="product.image" [alt]="product.name" /></figure>
-          <div class="card-body">
-              <div class="flex justify-between">
-                <h2 [style.color]="settingsService.color()" class="card-title">{{product.name}}</h2>
-                <div class="card-title">€ {{product.cost}}</div>
-              </div>
-              <p>{{product.description}}</p>
-              <div class="card-actions justify-end">
-                  <button 
-                    [disabled]="!settingsService.isShopEnabled()"
-                    class="btn btn-primary" 
-                    (click)="cartService.addToCart(product)"
-                  >
-                      Add to Cart
-                  </button>
-              </div>
-          </div>
+  <div class="card w-full bg-base-100 shadow-xl">
+    <figure><img [src]="product.image" [alt]="product.name" /></figure>
+    <div class="card-body">
+      <div class="flex justify-between">
+        <h2 [style.color]="settingsService.color()" class="card-title">{{product.name}}</h2>
+        <div class="card-title">€ {{product.cost}}</div>
       </div>
+      <p>{{product.description}}</p>
+      <div class="card-actions justify-end">
+        <button [disabled]="!settingsService.isShopEnabled()" class="btn btn-primary"
+          (click)="cartService.addToCart(product)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
   }
+</div>
+
+<hr class="my-5">
+<div class="p-5">
+  <h2 class="card-title mb-5">Play with deferrable views</h2>
+  <!-- 
+      defer it's not as ngIF
+        - defer used to load
+        - ngIF used to show  
+    -->
+  <!-- ! Load when boolean is true -->
+  <!-- @defer (when isVisible()) {
+    <p>Facciamo finta che sono un componente</p>
+  } @placeholder { Qui apparirà qualcosa } -->
+
+
+  <!-- ! Load when button in placeholder is clicked -->
+  <!-- @defer (on interaction) {
+    <p>Facciamo finta che sono un componente</p>
+  } @placeholder { <button class="btn">Cliccami e ti mostro il finto componente</button> } -->
+
+  <!-- ! Load when component is on viewport -->
+  <!-- 
+  @defer( on viewport) {
+    <p>x</p>
+  } @placeholder {
+    <div>placeholder</div>
+  } -->
+
+  <!-- ! Load when footer, element anchored, is on viewport -->
+  <!-- @defer (on viewport(footer)) {
+    <p>x</p>
+  } @placeholder {
+    <div>placeholder here!</div>   
+  }
+  <footer #footer>i'm a footer</footer> -->
+
+  <!-- ! Load with loading end error  -->
+<!--   @defer (on interaction) {
+    <app-big-list />
+  } @placeholder {
+    <button>Load List</button>
+  } @loading {
+    <div>Rendering ...</div>
+  } @error {
+    <div>Failed to load chunk</div>
+  } -->
 </div>

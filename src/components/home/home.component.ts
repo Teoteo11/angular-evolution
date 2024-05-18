@@ -15,4 +15,12 @@ export default class HomeComponent {
   products = signal<Product[]>(initialState);
   cartService = inject(CartService);
   settingsService = inject(SettingsService);
+  isVisible = signal(false)
+
+  constructor() {
+    // load dummy component after 3000ms, angular loaded it after 3000ms
+    /*   setTimeout( () => {
+        this.isVisible.update(prev => !prev)
+      }, 3000) */
+  }
 }
