@@ -1,0 +1,37 @@
+<h1 class="text-xl my-6">Editor</h1>
+    
+    <div class="flex flex-col gap-3">
+      <div class="flex gap-2 items-center">
+        <p>Change Title: </p>
+        <input 
+          type="text"
+          class="input input-bordered"
+          #title
+          (input)="settingsService.setConfig('title', title.value)"
+          [value]="settingsService.title()"
+        >
+      </div>
+
+      <div class="flex gap-2 items-center">
+        <p>Enable Shop: </p> 
+        <input 
+          type="checkbox"
+          class="toggle toggle-success"
+          #enableShop
+          (input)="settingsService.setConfig('enableShop', enableShop.checked)"
+          [checked]="settingsService.isShopEnabled()"
+        >
+      </div>
+
+      <div class="flex gap-2 items-center">
+        <p>Change color: </p>
+        <input 
+          type="color"
+          class="input input-bordered"
+          #color
+          (input)="settingsService.setConfig('color',color.value)"
+          [value]="settingsService.color()"
+        >
+      </div>
+      
+    </div>
